@@ -1,0 +1,49 @@
+﻿@model WebApplicationMVC.Models.ServerInfo
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <h1>Insert Awesome Fucking Title Here</h1>
+
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <h1>Server Details</h1>
+        <p>Name: @Model.Name</p>
+        <p>Description: @Model.Description</p>
+        <p>Server Address: @Model.Address</p>
+        <p>Server Enviornment: @Model.Enviornment</p>
+        <p>Game Version: @Model.GameVersion</p>
+        <p>Active Map:@Model.Map</p>
+        <p>Server Type: @Model.ServerType</p>
+    </div>
+
+    <div class="col-md-4">
+        <h1>Player Details</h1>
+        <p>Players Online: @Model.PlayersOnline</p>
+        <p>Player Cap: @Model.MaxPlayers</p>
+        @foreach (var player in @Model.PlayerList)
+        {
+            <p>Name: @player.Name</p>
+            <p>Score: @player.Score</p>
+            <p>Time Connected: @player.Time</p>
+        }
+    </div>
+
+    <div class="col-md-4">
+        <h1>Mod Details</h1>
+        <p></p>
+    </div>
+</div>
+
+<div class="row">
+    <h1>Server Rules</h1>
+    @foreach (var rule in Model.ServerRules)
+    {
+        <h4> @rule.Name : @rule.Value</h4>
+    }
+</div>
+
+
