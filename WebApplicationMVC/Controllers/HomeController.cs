@@ -22,11 +22,10 @@ namespace WebApplicationMVC.Controllers
             return View();
         }
 
-        public ActionResult Contact()
+        public ActionResult Players()
         {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
+            var model = new ServerDataParser();
+            return View(model);
         }
     }
 }

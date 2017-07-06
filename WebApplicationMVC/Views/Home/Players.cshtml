@@ -1,0 +1,31 @@
+﻿<!--TODO: Eventually Convert to Angular 2-->
+<!-- For now, we only need to read-->
+
+@model WebApplicationMVC.Models.ServerDataParser
+@{
+    ViewBag.Title = "Players && Tribes";
+}
+
+<div class="jumbotron">
+    <h1>@ViewBag.Title.</h1>
+</div>
+
+@foreach (var tribe in Model.Container.Tribes)
+{
+    <h2>@tribe.Name</h2>
+    <h4>Lead by @tribe.Owner.CharacterName</h4>
+    foreach(var player in tribe.Members)
+    {
+        <p>@player.CharacterName: Level @player.Level || @player.ExperiencePoints Total Experience Gained ||
+        Online Now: @player.Online</p>
+        <p><a href="@player.PlayerInfo.ProfileUrl"><img src="@player.PlayerInfo.AvatarFull" /></a></p>
+        <p>Played by @player.SteamName</p>
+        <p>Ban Info: Community Banned: @player.BanInfo.CommunityBanned || VACBanned: @player.BanInfo.VACBanned 
+        || Banned @player.BanInfo.NumberOfGameBans total times || @player.BanInfo.DaysSinceLastBan Days Since Last Ban 
+        || Economy Bans: @player.BanInfo.EconomyBan
+        </p>
+    }
+}
+
+
+
